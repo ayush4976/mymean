@@ -1,0 +1,137 @@
+function Student(id,name,phy,chm,maths){
+	this.id=id;
+	this.name=name;
+	this.phy=phy;
+	this.chm=chm;
+	this.maths=maths;
+	/*this.total=function(){
+		console.log("TOTAL MARKS OBTAINED IS: "+this.total1());
+	}
+	this.percent=function(){
+		console.log("PERCENTAGE OBTAINED IS: "+this.total1()/3);
+	}*/
+	this.total1=function(){
+		sum=0;
+		sum+=this.phy+this.chm+this.maths;
+		return sum;
+	}
+	Student.prototype.total=function(){
+		console.log(`TOTAL MARKS OF ${this.name} IS: `+this.total1()
+);
+	}
+	Student.prototype.per=function(){
+		console.log(`PERCENTAGE OF ${this.name} IS: `+this.total1()/3 );	
+	}
+	Student.prototype.grade=function()
+		{
+		if(this.total1()/3>=90)
+        {
+			console.log(`GRADE OF ${this.name} IS: A1`);
+    	}
+		else if(this.total1()/3>=80 && this.total1()/3<90)
+			console.log(`GRADE OF ${this.name} IS: A2`);
+        else if(this.total1()/3>=70 && this.total1()/3<80)
+			console.log(`GRADE OF ${this.name} IS: B1`);
+		else
+ 			console.log(`GRADE OF ${this.name} IS: B2`);
+	}
+}
+
+undefined
+var Ayush=new Student(22,"Ayush",85,66,90);
+undefined
+Ayush.grade();
+VM93:32 GRADE OF Ayush IS: A2
+undefined
+function Student(id,name,phy,chm,maths){
+	this.id=id;
+	this.name=name;
+	this.phy=phy;
+	this.chm=chm;
+	this.maths=maths;
+	/*this.total=function(){
+		console.log("TOTAL MARKS OBTAINED IS: "+this.total1());
+	}
+	this.percent=function(){
+		console.log("PERCENTAGE OBTAINED IS: "+this.total1()/3);
+	}*/
+	this.total1=function(){
+		sum=0;
+		sum+=this.phy+this.chm+this.maths;
+		return sum;
+	}
+	Student.prototype.total=function(){
+		console.log(`TOTAL MARKS OF ${this.name} IS: `+this.total1()
+);
+	}
+	Student.prototype.per=function(){
+		console.log(`PERCENTAGE OF ${this.name} IS: `+this.total1()/3 );	
+	}
+	Student.prototype.grade=function()
+		{
+		if(this.total1()/3>=90)
+        {
+			console.log(`GRADE OF ${this.name} IS: A1`);
+    	}
+		else if(this.total1()/3>=80 && this.total1()/3<90)
+			console.log(`GRADE OF ${this.name} IS: A2`);
+        else if(this.total1()/3>=70 && this.total1()/3<80)
+			console.log(`GRADE OF ${this.name} IS: B1`);
+		else if(this.total1()/3>=60 && this.total1()/3<70)
+ 			console.log(`GRADE OF ${this.name} IS: B2`);
+		else
+			console.log(`GRADE OF ${this.name} IS: VERY POOR GRADE...WORK HARD...STUDY MORE`);
+	}
+}
+
+undefined
+var Rahul=new Student(15,"Rahul",0,0,0);
+undefined
+Rahul.total();
+VM241:19 TOTAL MARKS OF Rahul IS: 0
+undefined
+Rahul.per();
+VM241:23 PERCENTAGE OF Rahul IS: 0
+undefined
+Rahul.grade();
+VM241:38 GRADE OF Rahul IS: VERY POOR GRADE...WORK HARD...STUDY MORE
+undefined
+var Rahul=new Student(15,"nishant",0,0,0);
+undefined
+nishant.total();
+VM438:1 Uncaught ReferenceError: nishant is not defined
+    at <anonymous>:1:1
+(anonymous) @ VM438:1
+var nishant=new Student(15,"nishant",0,0,0);
+undefined
+nishant.total();
+VM241:19 TOTAL MARKS OF nishant IS: 0
+undefined
+nishant.per();
+VM241:23 PERCENTAGE OF nishant IS: 0
+undefined
+nishant.grade();
+VM241:38 GRADE OF nishant IS: VERY POOR GRADE...WORK HARD...STUDY MORE
+undefined
+var nishant=new Student(15,"nishant",40,60,70);
+undefined
+nishant.total();
+VM241:19 TOTAL MARKS OF nishant IS: 170
+undefined
+nishant.per();
+VM241:23 PERCENTAGE OF nishant IS: 56.666666666666664
+undefined
+nishant.grade();
+VM241:38 GRADE OF nishant IS: VERY POOR GRADE...WORK HARD...STUDY MORE
+undefined
+var nishant=new Student(15,"nishant",140,60,170);
+undefined
+nishant.total();
+VM241:19 TOTAL MARKS OF nishant IS: 370
+undefined
+nishant.per();
+VM241:23 PERCENTAGE OF nishant IS: 123.33333333333333
+undefined
+nishant.grade();
+VM241:29 GRADE OF nishant IS: A1
+undefined
