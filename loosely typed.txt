@@ -1,0 +1,17 @@
+function add(){
+var sum = 0;
+for(let i = 0; i<arguments.length; i++){
+
+if(arguments[i] instanceof Array){
+for(let j = 0; j<arguments[i].length; j++){
+//arguments.push(arguments[i][j]);
+sum+=arguments[i][j];
+}
+}
+if(typeof arguments[i]=="function"){
+arguments[i]  = arguments[i]();
+}
+sum+=isNaN(parseInt(arguments[i]))?0:parseInt(arguments[i]);
+}
+return sum;
+}
