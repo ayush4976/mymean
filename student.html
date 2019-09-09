@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+     <meta name="description" content="" />
+     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors" />
+     <meta name="generator" content="Jekyll v3.8.5" />
+     <title>Welcome Page</title>
+
+     <!-- <link
+      rel="canonical"
+      href="https://getbootstrap.com/docs/4.3/examples/dashboard/"
+    /> -->
+     <link rel="stylesheet" href="assests/design.css" />
+     <link rel="stylesheet" href="assests/studentcss.css">
+     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+     <!-- <script src="scripts/utils/util.js"></script>
+     <script src="scripts/crud/model/question.js"></script>
+     <script src="scripts/crud/model/questionoperations.js"></script>
+     <script src="scripts/crud/controller/questioncontroller.js"></script> -->
+     <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
+     <script src="scripts/utils/firebase.js"></script>
+     <script src="studentCrud/scripts/model/studentModel.js"></script>
+     <script src='studentCrud/scripts/controller/studentController.js'></script>
+     <script src="https://kit.fontawesome.com/203fd6642e.js"></script>
+     
+     <!-- Bootstrap core CSS -->
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+     <style>
+          .bd-placeholder-img {
+               font-size: 1.125rem;
+               text-anchor: middle;
+               -webkit-user-select: none;
+               -moz-user-select: none;
+               -ms-user-select: none;
+               user-select: none;
+          }
+
+          @media (min-width: 768px) {
+               .bd-placeholder-img-lg {
+                    font-size: 3.5rem;
+               }
+          }
+     </style>
+     <!-- Custom styles for this template -->
+     <link href="assests/style.css" rel="stylesheet" />
+</head>
+
+<body>
+     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+          <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="index.html">Online Exam</a>
+          <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search" />
+          <ul class="navbar-nav px-3">
+               <li class="nav-item text-nowrap">
+                    <button id="signout" class="btn btn-primary">Sign Out</button>
+               </li>
+          </ul>
+     </nav>
+
+     <div class="container-fluid">
+          <div class="row">
+               <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                    <div class="sidebar-sticky">
+                         <ul class="nav flex-column">
+                              <li class="nav-item">
+                                   <a class="nav-link "> </a>
+                                        <!-- <span data-feather="home"></span> -->
+                                        <span class="sr-only"></span>Student 
+                                   </a>
+                              </li>
+                              <li class="nav-item">
+                                   <a class="nav-link"  id="userId" href="#">
+                                        <span data-feather="file"></span>
+                                        
+                                   </a>
+                              </li>
+                              <li class="nav-item">
+                                   <a class="nav-link" id="userScore" href="#">
+                                        <span data-feather="file"></span>
+                              
+                                   </a>
+                              </li>
+                              <li class="nav-item">
+                                   <a class="nav-link" id="userResult" href="#">
+                                        <span data-feather="file"></span>
+                              
+                                   </a>
+                              </li>
+                              <li class="nav-item">
+                                   <a class="nav-link" id="userTime" href="#">
+                                        <span data-feather="file"></span>
+                              
+                                   </a>
+                              </li>
+                              
+                         </ul>
+                    </div>
+               </nav>
+
+               <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                    <div
+                         class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                         <h1 class="h1">Exam Question</h1>
+                         <div id="crudQuestion"></div>
+                         <div class="btn-toolbar mb-2 mb-md-0">
+                              <div class="btn-group mr-2">
+                                   <button type="button" class="btn btn-sm btn-outline-secondary">
+                                        Share
+                                   </button>
+                                   <button type="button" class="btn btn-sm btn-outline-secondary">
+                                        Export
+                                   </button>
+                              </div>
+                              <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                                   <span data-feather="calendar"></span>
+                                   This week
+                              </button>
+                         </div>
+                    </div>
+          <div id='rules'><pre>
+          <h2>Rules:</h2>
+          <h3> Eligibility and Limitations for Online Track:</h3>
+               Schools/ Junior colleges participating in the contest should be affiliated, registered or recognized by the State
+               or
+               Central education boards as also International boards.
+               School/ Junior colleges desirous of participating in the contest should, prior to participating be registered with
+               us
+               through our website or through our official coordinators..
+               Once the schools and junior colleges register themselves, each participating student therein should register
+               themselves
+               individually for being a part of the contest either directly or through the respective school coordinator.
+               All participating schools/ junior colleges should provide for the exclusive use their participants, a computer lab
+               with
+               a minimum of 10 computers and Internet connectivity with a minimum speed of 512 KBPS (non-shared).
+               Students of Std 11th to 12th from any stream being Science, Commerce or Arts are eligible to participate in senior
+               colleges in the IT “Lion” category.
+               Coordinators of the participating schools cannot invigilate the examination of their schools. They may do so for
+               any
+               other participating school assigned by itolympiad management .
+               For the online exam, each participant shall receive their individual username and password to login individually.
+           <h3>Selection and Results:</h3>
+               Top Score Method: In the normal course, the participant with the higher score in shortest time span for the given
+               exam
+               track will be shortlisted for next level. However, in the event of two or more participants getting the same score,
+               the
+               one who completes the same in the shortest time will be given priority in selection.
+               Decision of the Organizers in this regard shall be final and cannot be questioned.
+               P.A.Inamdar College of VEDA may at their discretion at any stage change or include additional/ alternative test
+               methods
+               not previously disclosed for the IT Olympiad Online Exams at any or all levels. Participants may request for
+               knowing
+               latest selection criterion by sending a mail to olympiad@veda-edu.com.
+               The selection criteria of such tests will be announced prior to the date of examination for the applicable level.
+               To ensure wider participation, P.A.Inamdar College of VEDA reserves an absolute and unquestionable right to
+               restrict the
+               number of entries per institute/ testing center in the India finals. No enquiries or petitions in this regard will
+               be
+               entertained.
+               The top 3 scorers in each category from each school or junior college shall be eligible to participate in the final
+               round of the contest.
+               The results of the final round shall be declared on the same day as the final contest at MCE Society, Azam Campus,
+               Pune.
+               Students along with their respective coordinators are expected to be present.
+               The criterion for selecting a winner is the time taken to finish the examination. The candidate with the highest
+               score
+               in the minimum time shall stand selected.
+            </pre>
+          <p style="text-align:right">
+               <button id='startExam' class="btn btn-success" style="box-align: right">Start Exam</button>
+          </p>
+          <br><br>
+          <hr></div><br>
+         
+          <div id='questionbox'>
+               <h2 class='h2' style="text-align: center">Quiz on JavaScripts</h2>
+               <table id='table'>
+                    <tr>
+                         <td id='questionButton'></td>
+                    </tr>
+               </table>
+               <div id='timerval' style="text-align: right"></div>
+               <div class="quiz-container">
+                    <div id="quiz"></div>
+               </div><div>
+                    <button id="previous" class='btn btn-outline-secondary'>Previous Question</button>
+                    <button id="next" class='btn btn-outline-secondary'>Next Question</button>
+                    <button id="end" class='btn btn-outline-secondary'>End Quiz</button>
+                    <button id="submit" class='btn btn-outline-secondary'>Submit Quiz</button>
+               </div>
+              
+          </div>
+          <hr>
+         
+       
+     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+          integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+          crossorigin="anonymous"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+          integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+          crossorigin="anonymous"></script>
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+          integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+          crossorigin="anonymous"></script>
+   
+</body>
+
+</html>
