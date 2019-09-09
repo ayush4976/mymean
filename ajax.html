@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta
+      name="author"
+      content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
+    />
+    <meta name="generator" content="Jekyll v3.8.5" />
+    <title>Cricket</title>
+
+    <!-- Bootstrap core CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script>
+      function doAjax() {
+        var id = document.querySelector("#pid").value;
+        var pr = fetch(
+          `http://cricapi.com/api/playerStats?pid=${id}&apikey=A8zoDoPaQgefmB7KunnSuApSgL73`
+        );
+        if (id != "-1") {
+          pr.then(response => {
+            response
+              .json()
+              .then(data => printData(data))
+              .catch(err => console.log("Data is not right"));
+          }).catch(e => console.log("some error"));
+        }
+      }
+      function printData(dataObject) {
+        document.querySelector(".card").style =
+          "display:block;width: 22rem; color:black;padding:auto;margin:auto";
+        for (let key in dataObject) {
+          if (
+            key == "name" ||
+            key == "born" ||
+            key == "country" ||
+            key == "playingRole" ||
+            // key == "profile" ||
+            key == "battingStyle"
+          ) {
+            document.getElementById(key).innerText = dataObject[key];
+          }
+          if (key == "imageURL") {
+            document.getElementById(key).src = dataObject[key];
+          }
+        }
+      }
+    </script>
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="cover.css" rel="stylesheet" />
+  </head>
+
+  <body class="text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand">Cricket</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="#">Home</a>
+            <a class="nav-link" href="#">Features</a>
+            <a class="nav-link" href="#">Contact</a>
+          </nav>
+        </div>
+      </header>
+
+      <main role="main" class="inner cover">
+        <h1 class="cover-heading">Search your player with their Id</h1>
+        <p class="lead">
+          Here you can see the players details
+        </p>
+        <p class="lead">
+          <!-- <a href="#" class="btn btn-lg btn-secondary">Learn more</a> -->
+          <select id="pid" class="custom-select custom-select-lg mb-3">
+            <option value="-1">Choose Player</option>
+            <option value="28081">Dhoni</option>
+            <option value="35320">Sachin</option>
+            <option value="253802">Virat</option>
+          </select>
+          <button class="btn btn-dark" onclick="doAjax()">Search</button>
+        </p>
+      </main>
+      <div id="pidi"></div>
+      <div class="card" style="width: 20rem; color:black ;display:none">
+        <img
+          id="imageURL"
+          class="card-img-top"
+          style="width:350px;height:350px"
+          alt="..."
+        />
+        <div class="card-body" style="color:black">
+          <h3 class="card-title" id="name"></h3>
+          <h5 class="card-title" id="born"></h5>
+          <p class="card-text" id="country"></p>
+        </div>
+        <ul class="list-group list-group-flush" style="color:black">
+          <li class="list-group-item" id="playingRole"></li>
+          <!-- <li class="list-group-item" id="profile"></li> -->
+          <li class="list-group-item" id="battingStyle"></li>
+        </ul>
+      </div>
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>
+            cricket for adults
+            <a href="ajax.html">Cricket</a>, by
+            <a href="https://twitter.com/mdo">@mdo</a>.
+          </p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
